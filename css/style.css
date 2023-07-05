@@ -1,0 +1,73 @@
+@import "./anicollection.css"; 
+:root {
+  --primary-color: #1b2f5c;
+  --secondary-color: #e59f41;
+  --danger-color: #c0272d;
+  --success-color: #2b7b3f;
+}
+@font-face {
+  font-family: FranklinGothicBook;
+  src: url("../fonts/Franklin\ Gothic\ Book\ Regular.ttf");
+}
+@font-face {
+  font-family: LucidaFaxRegular;
+  src: url("../fonts/Lucida\ Fax\ Regular.ttf");
+}
+
+/* reset main colors */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-secondary {
+  color: var(--secondary-color) !important;
+}
+
+.text-success {
+  color: var(--success-color) !important;
+}
+
+.text-danger {
+  color: var(--danger-color) !important;
+}
+ٍ .bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.bg-success {
+  background-color: var(--success-color) !important;
+}
+.bg-danger {
+  background-color: var(--danger-color) !important;
+}
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  color: white;
+  border: var(--primary-color) !important;
+}
+.btn-danger {
+  background-color: var(--danger-color) !important;
+  color: white;
+  border: var(--danger-color) !important;
+}
+.btn-secondary {
+  background-color: var(--secondary-color) !important;
+  color: white;
+  border: var(--secondary-color);
+}
+.btn-success {
+  background-color: var(--success-color) !important;
+  color: white;
+  border: var(--success-color);
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
+.modal {
+  background-color: rgba(255, 255, 255, 0.7);
+}
