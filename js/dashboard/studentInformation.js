@@ -39,7 +39,147 @@ document.querySelector(".accept-request").addEventListener("click", () => {
     window.location.href = "./requests.html";
   });
 });
-
+document.querySelector(".print-request").addEventListener("click", () => {
+  console.log("test");
+  const content = `<div class="bg-white text-primary rounded p-4 content-print">
+          <img src="../../images/logo.svg" alt="logo" width="150px" class="object-fit-contain mb-4"/>
+          <div class="row my-4">
+            <div class="col-sm-6">
+              <p>
+                <span class="fw-semibold">academic Year : </span> ${
+                  student.academeYear
+                }
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <p>
+                <span class="fw-semibold">University : </span> ${
+                  student.University
+                }
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <p>
+                <span class="fw-semibold">specialist : </span> ${
+                  student.specialist
+                }
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <p>
+                <span class="fw-semibold">transition Duration : </span> ${
+                  student.transitionDuration
+                }
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <p>
+                <span class="fw-semibold">EUStudent : </span> ${
+                  student.EUStudent ? "yes" : "no"
+                }
+              </p>
+            </div>
+          </div>
+          <div class="row gy-4 my-4">
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Application Form : </span>
+              <a
+                href="${student.ApplicationForm}"
+                class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Accommodation : </span>
+              <a href="${student.Accommodation}" class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Europass CV : </span>
+              <a href="${student.EuropassCV}" class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Proof of English : </span>
+              <a href="${student.ProofofEnglish}" class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Copy of the Passport : </span>
+              <a
+                href="${student.CopyofthePassport}"
+                class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+          </div>
+          ${
+            student.EUStudent
+              ? `<div class="row gy-4 my-4">
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">EuropeanHealth : </span>
+              <a href="${student.EuropeanHealth}" class="btn btn-primary btn-sm"
+                >show file</a
+              >
+            </div>
+          </div>`
+              : `
+          <div class="row gy-4">
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Copy Of The Travel Documents : </span>
+                <a href=${
+                  student.CopyOfTheTravelDocuments
+                } class="btn btn-primary btn-sm">show file</a> 
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Letter Of Confirmation : </span>
+                <a href=${
+                  student.LetterOfConfirmation
+                } class="btn btn-primary btn-sm">show file</a> 
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Valid Health : </span>
+                <a href=${
+                  student.ValidHealth
+                } class="btn btn-primary btn-sm">show file</a> 
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Medical Certificate : </span>
+                <a href=${
+                  student.MedicalCertificate
+                } class="btn btn-primary btn-sm">show file</a> 
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <span class="fw-semibold">Authorized Translation : </span>
+                <a href=${
+                  student.AuthorizedTranslation
+                } class="btn btn-primary btn-sm">show file</a> 
+            </div>
+            ${
+              student.OptionalRequirementsDocument
+                ? ` <div class="col-sm-6 col-md-4">
+                                                        <span class="fw-semibold">Optional Requirements Document : </span>
+                                                        <a href=${student.OptionalRequirementsDocument} class="btn btn-primary btn-sm">show file</a> 
+                                                      </div>`
+                : ``
+            }
+          </div>
+          `
+          }
+        </div>`;
+  document.querySelector("main").innerHTML += content;
+  html2canvas(document.querySelector(".content-print")).then((canvas) => {
+    let base64image = canvas.toDataURL("image/png");
+    // console.log(base64image);
+    let pdf = new jsPDF("p", "px", [1600, 1131]);
+    pdf.addImage(base64image, "PNG", 15, 15, 1110, 360);
+    pdf.save("webtylepress-two.pdf");
+  });
+  document.querySelector(".content-print").remove();
+});
 // functions
 function fillData() {
   document.querySelector(".loading-data").classList.add("d-none");
